@@ -9,7 +9,22 @@ In this talk, I report on my attempt to build a fully domestic and fully serverl
 
 Hands-on observations of the strengths and weaknesses of each implementation abound.  These observations in turn drive insights about the suitability of these projects to larger (or even commercial) workloads and what it might mean for the future of serverless computing.
 
-# Setup
+# Prerequisites
+
+* You must have cluster admin
+* You must have a client version of helm installed
+* The creator of the openfaas pods/deployments must have anyuid scc or you will get this when you attempt to run the gateway container
+----
+
+Error creating: pods "gateway-6ddc6954c-" is forbidden: unable to validate against any security context constraint: [spec.containers[0].securityContext.securityContext.runAsUser: Invalid value: 10001: must be in the ranges: [1000180000, 1000189999] spec.containers[1].securityContext.securityContext.runAsUser: Invalid value: 10001: must be in the ranges: [1000180000, 1000189999]]
+----
+
+## Setup (script)
+
+1. Login to openshift cluster
+2. Run the openfaas-setup.sh script
+
+## Setup (manual)
 
 Follow link:https://blog.openshift.com/getting-started-helm-openshift/[these instructions] for getting helm installed on OpenShift up to Step 3
 
